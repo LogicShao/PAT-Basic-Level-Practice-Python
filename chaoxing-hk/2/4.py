@@ -2,21 +2,22 @@ import random
 
 
 def getThreeRandomNumbers():
-    return random.sample(range(0, 100), 3)
+    return random.sample(range(0, 101), 3)
 
 
 def solve1(a, b, c):
     if a > b:
         a, b = b, a
+    if a > c:
+        a, c = c, a
     if b > c:
         b, c = c, b
-    if a > b:
-        a, b = b, a
     print('(方法一)升序值： a={}， b={}， c={}'.format(a, b, c))
 
 
 def solve2(a, b, c):
-    a, b, c = sorted([a, b, c])
+    a, b, c = min(a, b, c), a + b + c - max(a, b, c) - \
+        min(a, b, c), max(a, b, c)
     print('(方法二)升序值： a={}， b={}， c={}'.format(a, b, c))
 
 
